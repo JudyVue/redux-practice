@@ -26,7 +26,7 @@ export default class App extends React.Component {
             <Route 
               exact
               path='/'
-              component={ DashboardContainer }
+              component={() => <DashboardContainer/> }
             />
           </BrowserRouter>
         </Provider>

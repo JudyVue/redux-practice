@@ -13,6 +13,14 @@ export default (state=initialState, action) => {
     return state.filter(category => category.id !== payload.id);
     case 'CATEGORY_RESET':
       return initialState;
+    case 'TESTPROP_RENDER':
+      return state.map(category => {
+        if (category.id === action.id) 
+          category.testProp = payload;
+        else 
+          category.testProp = '';
+        return category;
+      });
     default: 
       return state;
   }

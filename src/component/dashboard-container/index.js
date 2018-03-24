@@ -25,6 +25,7 @@ class DashboardContainer extends React.Component {
     return (
       <main className='dashboard-container'>
         <h2>Dashboard</h2>
+        {/* <h4>TEST PROP: {this.props.testProp}</h4> */}
         <CategoryForm 
           buttonText='create category'
           onComplete={this.props.categoryCreate} //this property is different, it is a prop that lives on the state of the app
@@ -32,7 +33,14 @@ class DashboardContainer extends React.Component {
         {
           this.props.categories.map(item => 
           <div key={item.id}>
-            <h3>{item.title}</h3>
+            <h3
+              onClick={() => {
+                this.props.renderTestProp(item);
+              }}
+            >
+            {item.title}
+            {item.testProp && ` ${item.testProp}`}
+            </h3>
           </div>)
         }
       </main>
@@ -44,15 +52,24 @@ class DashboardContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     categories: state,
+    testProp: '',
   };
 }
 
 const mapDispatchToProps = (dispatch, getState) => {
+  console.log(getState, 'getState arg in mapDispatchToProps')
   return {
     //categoryCreate = type, category=payload
     categoryCreate: (category) => dispatch(categoryCreate(category)),
     categoryUpdate: (category) => dispatch(categoryUpdate(category)),
     categoryDelete: (category) => dispatch(categoryDelete(category)),
+    renderTestProp: (item) => {
+      dispatch({ 
+        type: 'TESTPROP_RENDER', 
+        payload: `: ${item.title} added as testProp`,
+        id: item.id,
+      })
+    },
   }
 }
 
