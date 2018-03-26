@@ -28,7 +28,7 @@ class DashboardContainer extends React.Component {
         {/* <h4>TEST PROP: {this.props.testProp}</h4> */}
         <CategoryForm 
           buttonText='create category'
-          onComplete={this.props.categoryCreate} //this property is different, it is a prop that lives on the state of the app
+          onComplete={this.props.categoryCreate} //this property is different from how we've usually passed in props to a component, it is a prop that lives on the state of the app
         />
         {
           this.props.categories.map(item => 
@@ -52,7 +52,6 @@ class DashboardContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     categories: state,
-    testProp: '',
   };
 }
 

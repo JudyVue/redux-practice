@@ -10,7 +10,7 @@ const UgliflyPlugin = require('uglifyjs-webpack-plugin');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 
 let plugins = [
-  //this plugin says for our env, we are using a Node env and that in our production player, we are in a Node env
+  //this plugin says for our env, we are using a Node env and that in our production, we are in a Node env
   new EnvironmentPlugin(['NODE_ENV']),
   //bundles up our CSS into one big file
   new ExtractPlugin('bundle-[hash].css'),
@@ -59,7 +59,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000, //tells webpack to cut up first 10k chars of a file and then pulls in the next part of the file of the next 10k chars
-              name: 'font/[name].ext', //tells webpack to make font directory, pull in name of font and its related extension
+              name: 'font/[name].[ext]', //tells webpack to make font directory, pull in name of font and its related extension
             },
           },
         ],

@@ -1,3 +1,5 @@
+'use strict';
+
 let initialState = [];
 
 export default (state=initialState, action) => {

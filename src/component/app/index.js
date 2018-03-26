@@ -16,7 +16,7 @@ export default class App extends React.Component {
       console.log(store.getState(), 'CURRENT STATE OF APP');
     })
     
-    store.dispatch( {type: null} );
+    // store.dispatch( {type: null} );
   }
   render() {
     return (
